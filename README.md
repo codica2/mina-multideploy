@@ -14,18 +14,18 @@ gem 'mina-multideploy'
 
 And then execute:
 ```
-$ bundle install
+bundle install
 ```
 
 Or install it yourself as:
 ```bash
-$ gem install mina-multideploy
+gem install mina-multideploy
 ```
 
 ## Getting Started
 Start off by generating a configuration file:
 ```
-$ bundle exec rails multideploy:init
+bundle exec rails multideploy:init
 ```
 this should give you a file in:
 ```
@@ -65,14 +65,14 @@ After you have configured servers at `config/initializers/multideploy.rb` you ca
 ### Semi-automatic. (recomended for first deploy)
 Run this command:
 ```ruby
-$ bundle exec rails multideploy:prepare
+bundle exec rails multideploy:prepare
 ```
 You will get two files `multideploy` and `server_deploy.rb` at working directory (tmp/deploy by default). Check them and run `./tmp/deploy/multideploy`.
 
 ### Automatic
 Run this command:
 ```ruby
-$ bundle exec rails multideploy:start
+bundle exec rails multideploy:start
 ```
 This will make the same things like `multideploy:prepare`, but the deployment will start automatically.
 
