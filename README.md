@@ -3,7 +3,7 @@
 Useful tool for parallel deploying on multiple servers with [mina](https://github.com/mina-deploy/mina).
 
 ## How it works
-This gem will help you deploy the application on multiple servers in parallel. It takes original mina `deploy.rb` file, change `application_name`, `domain` and starts deploying process.
+This gem will help you deploy the application on multiple servers in parallel. It takes original mina `deploy.rb` file, changes `application_name`, `domain` and starts deploying process.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -27,7 +27,7 @@ Start off by generating a configuration file:
 ```
 bundle exec rails multideploy:init
 ```
-this should give you a file in:
+It should give you a file in:
 ```
 config/initializers/multideploy.rb
 ```
@@ -53,7 +53,7 @@ config.servers = {
   '48.84.207.183'  => %w[codica timebot]
 }
 ```
-This means that your code will be deployed to 3 servers, and there can be several applications on one server.
+It means that your code will be deployed to 3 servers, and there can be several applications on one server.
 
 *`original`* - path to the original mina `deploy.rb` file which will be taken as a basic.
 
@@ -62,23 +62,23 @@ This means that your code will be deployed to 3 servers, and there can be severa
 ## Available features
 After you have configured servers at `config/initializers/multideploy.rb` you can start deploying in two ways.
 
-### Semi-automatic. (recomended for first deploy)
+### Semi-automatic deploy (recomended for first deploy)
 Run this command:
 ```ruby
 bundle exec rails multideploy:prepare
 ```
 You will get two files `multideploy` and `server_deploy.rb` at working directory (tmp/deploy by default). Check them and run `./tmp/deploy/multideploy`.
 
-### Automatic
+### Automatic deploy
 Run this command:
 ```ruby
 bundle exec rails multideploy:start
 ```
-This will make the same things like `multideploy:prepare`, but the deployment will start automatically.
+It will make the same as `multideploy:prepare`, but the deployment will start automatically.
 
 ## Additional information
 * all scripts are updated before launch `multideploy:prepare` and `multideploy:start`
-* add public SSH key, so you can login to server passwordles. Run `ssh-copy-id user@$host`
+* add public SSH key, so you can login to server without password. Run `ssh-copy-id user@$host`
 
 ## License
 
