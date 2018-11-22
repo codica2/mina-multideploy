@@ -33,6 +33,8 @@ config/initializers/multideploy.rb
 ```
 It should look something like this:
 ```ruby
+return unless defined? Mina::Multideploy
+
 Mina::Multideploy.configure do |config|
   config.servers = {}
   # Default velues
@@ -46,7 +48,7 @@ end
 *`servers`* - hash at format `domain` => `array of application_name's`.
 
 Example:
-```
+```ruby
 config.servers = {
   '84.155.207.209' => %w[carghana caryange cartanzania]
   '105.87.69.69'   => %w[poster]
@@ -67,7 +69,7 @@ Run this command:
 ```ruby
 bundle exec rails multideploy:prepare
 ```
-You will get two files `multideploy` and `server_deploy.rb` at working directory (tmp/deploy by default). Check them and run `./tmp/deploy/multideploy`.
+You will get file `servers_deploy.rb` at working directory (tmp/deploy by default). Check it and run `ruby ./tmp/deploy/server_deploy.rb`.
 
 ### Automatic deploy
 Run this command:
@@ -77,7 +79,7 @@ bundle exec rails multideploy:start
 It will make the same as `multideploy:prepare`, but the deployment will start automatically.
 
 ## Additional information
-* all scripts are updated before launch `multideploy:prepare` and `multideploy:start`
+* all scripts are updated according config file before launch `multideploy:prepare` and `multideploy:start`
 * add public SSH key, so you can login to server without password. Run `ssh-copy-id user@$host`
 
 ## License

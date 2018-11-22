@@ -12,6 +12,8 @@ module Multideploy
 
     def content
       <<-EOS
+return unless defined? Mina::Multideploy
+
 Mina::Multideploy.configure do |config|
   config.servers = {}
   # Default velues
