@@ -10,7 +10,6 @@ module Multideploy
 
     def call
       create_dir
-      write_bash_script
       write_ruby_script
     end
 
@@ -25,26 +24,7 @@ module Multideploy
     end
 
     def deploy_file
-      'server_deploy.rb'
-    end
-
-    def bash_script
-      script = '#!/bin/bash'
-      script << "\n\n"
-      script << "echo 'Deploy started!'"
-      script << "\n\n"
-      script << c.servers.keys.map { |ip| "ruby \"$PWD/#{working_dir}/#{deploy_file}\" --ip #{ip} &\n" }.join('')
-      script << "\n"
-      script << 'wait'
-      script << "\n"
-      script << "echo 'Deploy finished!'"
-    end
-
-    def write_bash_script
-      File.open("#{working_dir}/multideploy", 'w+') do |f|
-        f.write(bash_script)
-      end
-      FileUtils.chmod 0755, "#{working_dir}/multideploy"
+      'servers_deploy.rb'
     end
 
     def ruby_script
@@ -59,7 +39,7 @@ module Multideploy
       File.open("#{working_dir}/#{deploy_file}", 'w+') do |f|
         f.write(ruby_script)
       end
-      FileUtils.chmod 0755, "#{working_dir}/#{deploy_file}"
+      FileUtils.chmod 0o755, "#{working_dir}/#{deploy_file}"
     end
   end
 end
