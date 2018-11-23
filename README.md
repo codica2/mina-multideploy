@@ -11,7 +11,7 @@ This gem will help you deploy the application on multiple servers in parallel. I
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'mina-multideploy'
+gem 'mina-multideploy', '~> 1.1.0'
 ```
 
 And then execute:
