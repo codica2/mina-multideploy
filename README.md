@@ -3,6 +3,8 @@
 Useful tool for parallel deploying on multiple servers with [mina](https://github.com/mina-deploy/mina).
 
 ## How it works
+![How it works](https://raw.githubusercontent.com/codica2/mina-multideploy/master/docs/images/how-it-works.gif)
+
 This gem will help you deploy the application on multiple servers in parallel. It takes original mina `deploy.rb` file, changes `application_name`, `domain` and starts deploying process.
 
 ## Installation
