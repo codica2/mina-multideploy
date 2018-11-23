@@ -85,12 +85,12 @@ It will make the same as `multideploy:prepare`, but the deployment will start au
 * add public SSH key, so you can login to server without password. Run `ssh-copy-id user@$host`
 
 ## License
-mina-multideploy is Copyright © 2015-2018 codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+mina-multideploy is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## About Codica
 
 [![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com)
 
-mina-multideploy is maintained and funded by codica. The names and logos for codica are trademarks of codica.
+mina-multideploy is maintained and funded by Codica. The names and logos for Codica are trademarks of Codica.
 
 We love open source software! See [our other projects](https://github.com/codica2) or [hire us](https://www.codica.com/) to design, develop, and grow your product.
