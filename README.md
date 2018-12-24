@@ -1,11 +1,11 @@
 # Mina multideploy
 
-Useful tool for parallel deploying on multiple servers with [mina](https://github.com/mina-deploy/mina).
+A useful tool for parallel deployment on multiple servers with [mina](https://github.com/mina-deploy/mina).
 
 ## How it works
 ![How it works](https://raw.githubusercontent.com/codica2/mina-multideploy/master/docs/images/how-it-works.gif)
 
-This gem will help you deploy the application on multiple servers in parallel. It takes original mina `deploy.rb` file, changes `application_name`, `domain` and starts deploying process.
+This gem will help you to deploy the application on multiple servers simultaneously. It takes original mina `deploy.rb` file, changes `application_name`, `domain` and starts the deployment process.
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -25,7 +25,7 @@ gem install mina-multideploy
 ```
 
 ## Getting Started
-Start off by generating a configuration file:
+Start by generating a configuration file:
 ```
 bundle exec rails multideploy:init
 ```
@@ -66,7 +66,7 @@ It means that your code will be deployed to 3 servers, and there can be several 
 ## Available features
 After you have configured servers at `config/initializers/multideploy.rb` you can start deploying in two ways.
 
-### Semi-automatic deploy (recomended for first deploy)
+### Semi-automatic deploy (recommended for first deploy)
 Run this command:
 ```ruby
 bundle exec rails multideploy:prepare
