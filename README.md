@@ -80,6 +80,14 @@ bundle exec rails multideploy:start
 ```
 It will make the same as `multideploy:prepare`, but the deployment will start automatically.
 
+### Runing mina or rake tasks
+ Use command as argument for `multideploy:run`
+
+```ruby
+bundle exec rails "multideploy:run[rake[db:migrate]]"
+```
+
+
 ## Additional information
 * all scripts are updated according config file before launch `multideploy:prepare` and `multideploy:start`
 * add public SSH key, so you can login to server without password. Run `ssh-copy-id user@$host`
