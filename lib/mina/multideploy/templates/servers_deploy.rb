@@ -10,6 +10,7 @@ SERVERS = SERVERS_TO_REPLACE
 w_dir = Dir.pwd
 c_dir = "#{w_dir}/CUSTOM_W_DIR_TO_REPLACE/config"
 l_dir = "#{w_dir}/CUSTOM_W_DIR_TO_REPLACE/log"
+command_argument = ARGV[0] || 'deploy'
 
 original_deploy_config = File.read("#{w_dir}/ORIGINAL_DEPLOY_FILE_TO_REPLACE")
 max_ip_length = SERVERS.keys.map(&:length).max + 1
@@ -36,13 +37,14 @@ Parallel.each(SERVERS, in_threads: SERVERS.length) do |ip, names|
     FileUtils.rm "#{l_dir}/#{l_file_name}" if File.exist?("#{l_dir}/#{l_file_name}")
     File.write("#{c_dir}/#{c_file_name}", custom_deploy_config)
 
-    cmd = "mina deploy -f #{c_dir}/#{c_file_name}"
+    cmd = "mina #{command_argument} -f #{c_dir}/#{c_file_name}"
     cmd = `#{cmd}`
 
     logger = Logger.new("#{l_dir}/#{l_file_name}")
     logger.info(cmd)
 
-    report += "#{site} ✗ " if cmd.include?('ERROR: Deploy failed.')
+    report += "#{site} ✗ " if cmd.include?('ERROR')
+  
     bar.advance(report: report)
   end
 end

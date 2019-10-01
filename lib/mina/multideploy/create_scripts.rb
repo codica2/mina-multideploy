@@ -15,16 +15,23 @@ module Multideploy
 
     private
 
-    def working_dir
-      c.w_dir
-    end
-
     def create_dir
       FileUtils.mkdir_p(working_dir)
     end
 
+    def working_dir
+      c.w_dir
+    end
+
     def deploy_file
       'servers_deploy.rb'
+    end
+
+    def write_ruby_script
+      File.open("#{working_dir}/#{deploy_file}", 'w+') do |f|
+        f.write(ruby_script)
+      end
+      FileUtils.chmod 0o755, "#{working_dir}/#{deploy_file}"
     end
 
     def ruby_script
@@ -33,13 +40,6 @@ module Multideploy
       script = script.gsub('SERVERS_TO_REPLACE', c.servers.inspect)
       script = script.gsub('ORIGINAL_DEPLOY_FILE_TO_REPLACE', c.original)
       script = script.gsub('CUSTOM_W_DIR_TO_REPLACE', c.w_dir)
-    end
-
-    def write_ruby_script
-      File.open("#{working_dir}/#{deploy_file}", 'w+') do |f|
-        f.write(ruby_script)
-      end
-      FileUtils.chmod 0o755, "#{working_dir}/#{deploy_file}"
     end
   end
 end
