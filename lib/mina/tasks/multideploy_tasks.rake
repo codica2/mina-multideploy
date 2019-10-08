@@ -15,7 +15,7 @@ namespace :multideploy do
   end
 
   desc 'Prepare deploy scripts and start deploying'
-  task :start :environment do
+  task start: :environment do
     c = Mina::Multideploy.configuration
     Multideploy::CreateScripts.call
     exec "ruby ./#{c.w_dir}/servers_deploy.rb"
